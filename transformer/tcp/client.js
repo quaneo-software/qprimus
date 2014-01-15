@@ -7,12 +7,14 @@ module.exports = function client() {
     var events = require('events');
 
     var primus = this;
-    var socket, distil;
+    var socket, distiller;
 
-    //todo: try-catch on pulling this lib.
-    // var distiller = require(__dirname + "/transformer/tcp/distiller");
-    var distiller = require("qprimus/transformer/tcp/distiller");
-    // console.log('distiller: ' + distiller);
+    var Distiller;
+    try { Distiller = require("qprimus/transformer/tcp/distiller"); }
+    catch(e){
+        try { Distiller = require(__dirname + "/transformer/tcp/distiller"); }
+        catch(e) { throw new Error('Unable To Load Distiller'); }
+    }
 
     var factory = function(){
         var socket = new net.Socket();
@@ -20,22 +22,20 @@ module.exports = function client() {
         socket.setKeepAlive(true);
         var encoding = 'ascii';
         socket.setEncoding(encoding);
-        var distil = new distiller();
-        return { socket: socket, distil: distil };
+        var distiller = new Distiller();
+        return { socket: socket, distiller: distiller };
     };
 
     //Connect to the given URL.
     primus.on('outgoing::open', function opening() {
         
         if (socket) { socket.end(); }
-        if (distil) { distil.end(); }
+        if (distiller) { distiller.end(); }
 
         var components = factory();
         socket = components.socket;
-        distil = components.distil;
+        distiller = components.distiller;
         var url = primus.url;
-
-        console.log('socket: connecting to server: ' + url.hostname + ' port: ' + url.port);
 
         socket.connect(url.port, url.hostname);
 
@@ -44,23 +44,17 @@ module.exports = function client() {
         socket.on('error',      primus.emits('error'));
         socket.on("end",        primus.emits('end'));
         
-        socket.on("data",       function(data){
-            console.log('----RAW DATA------');
-            console.log(data);
-            console.log('----END RAW DATA------')
-            distil.push(data);
-        }); 
-
-        distil.on("message",    primus.emits('data'));
+        socket.on("data",           function(data){ distiller.push(data); }); 
+        distiller.on("message",     primus.emits('data'));
     });
 
     //Close The Socket Gracefully
     primus.on('outgoing::end', function close() {
         if (socket) {
             socket.end();
-            distil.end();
+            distiller.end();
             socket = null;
-            distil = null;
+            distiller = null;
         }
     });
 

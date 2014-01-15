@@ -16,9 +16,6 @@ _.extend(distiller.prototype, events.EventEmitter.prototype, {
         this.buffer = messages.pop();
         var self = this;
         messages.forEach(function(message) {
-            console.log('----DISTILLER MESSAGE EMIT------');
-            console.log(message);
-            console.log('----END DISTILLER MESSAGE EMIT------');
             self.emit('message', message);
         });
     },

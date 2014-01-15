@@ -4,9 +4,6 @@ var http = require('http');
 var tcp = require('./transformer/tcp');
 var xmlparser = require('./parser/xml');
 
-console.log('tcp ' + tcp);
-console.log('xmlparser ' + xmlparser);
-
 var Socket = primus.createSocket({ transformer: tcp, parser: xmlparser});
 
 var url = "http://127.0.0.1:21100";
@@ -20,7 +17,7 @@ var client = new Socket(url, {
 });
 
 client.on("open", function(){
-    console.log('client tis open');
+    console.log('client is open');
     client.write({ 
         ClientRequest: {
             action: "Ledger",

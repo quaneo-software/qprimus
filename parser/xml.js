@@ -6,9 +6,7 @@ module.exports = {
         var xmlmapper = require('xml-mapping');
         var err;
         try { data = xmlmapper.toxml(data); }
-        catch (e) { console.log(e); err = e; }
-        console.log('encode-xml');
-        console.log(data);
+        catch (e) { err = e; }
         return fn(null, data);
     },
 
@@ -17,8 +15,6 @@ module.exports = {
         var err;
         try { data = xmlmapper.tojson(data); }
         catch (e) { err = e; }
-        console.log('decode-xml');
-        console.log(data);
         return fn(null, data);
     }
 
