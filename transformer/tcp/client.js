@@ -9,7 +9,9 @@ module.exports = function client() {
     var primus = this;
     var socket, distil;
 
-    var distiller = require(__dirname + "/transformer/tcp/distiller");
+    //todo: try-catch on pulling this lib.
+    // var distiller = require(__dirname + "/transformer/tcp/distiller");
+    var distiller = require("qprimus/transformer/tcp/distiller");
     // console.log('distiller: ' + distiller);
 
     var factory = function(){

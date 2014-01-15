@@ -4,6 +4,8 @@ var http = require('http');
 var tcp = require('./transformer/tcp');
 var xmlparser = require('./parser/xml');
 
+console.log('tcp ' + tcp);
+console.log('xmlparser ' + xmlparser);
 
 var Socket = primus.createSocket({ transformer: tcp, parser: xmlparser});
 
