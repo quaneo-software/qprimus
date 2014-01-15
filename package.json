@@ -1,0 +1,17 @@
+{
+  "name": "qprimus",
+  "version": "0.0.1",
+  "description": "Quaneo Primus Extensions",
+  "author": {
+    "name": "Alex Curtis",
+    "email": ""
+  },
+  "dependencies": {
+    "primus": "git://github.com/primus/primus#master",
+    "xml-mapping": "~1.5.2",
+    "underscore": "~1.5.2"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "MIT"
+}
