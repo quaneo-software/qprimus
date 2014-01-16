@@ -18,13 +18,6 @@ var client = new Socket(url, {
 
 client.on("open", function(){
     console.log('client is open');
-    client.write({ 
-        ClientRequest: {
-            action: "Ledger",
-            channel: "Portal:Web",
-            auth: "testuser1:123"
-        }
-    });
 });
 
 client.on("end", function(){
