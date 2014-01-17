@@ -44,7 +44,11 @@ module.exports = function client() {
         socket.on('error',      primus.emits('error'));
         socket.on("end",        primus.emits('end'));
         
-        socket.on("data",           function(data){ distiller.push(data); }); 
+        socket.on("data", function(data){
+            //Check Distiller To Avoid Race Condition (end + data)
+            if(distiller){ distiller.push(data); }
+        }); 
+
         distiller.on("message",     primus.emits('data'));
     });
 
