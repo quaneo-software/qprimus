@@ -1,6 +1,6 @@
 {
     "name": "primus-tcp",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Primus Raw TCP Transformer (Server-to-Server)",
     "homepage": "https://github.com/alexcurtis/primus-tcp",
     "author": {
