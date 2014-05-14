@@ -15,8 +15,8 @@ Add the transformer to the Primus constructor and subscribe to the events.
 
 ```javascript
 var primus = require('primus');
-var tcp = require('qprimus/transformer/tcp');
-var parser = require('qprimus/transformer/tcp');
+var tcp = require('primus-tcp/transformer/tcp');
+var parser = require('primus-tcp/transformer/tcp');
 
 var PrimusSocket = primus.createSocket({
     transformer: tcp,
