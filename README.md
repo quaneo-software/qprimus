@@ -36,5 +36,5 @@ connection.on("error", function(){ /*...*/ });
 connection.on("data", function(data){ /*...*/ });
 ```
 
-Now we are able to connect to a vanilla tcp server (Java?) and still keep all the really nice abstractions (reconnect, heartbeat, etc) that make Primus great.
+Now we are able to connect to a vanilla tcp server (Java?) and still keep all the neat abstractions (reconnect, heartbeat, etc) that Primus provides.
 
