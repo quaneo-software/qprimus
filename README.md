@@ -2,7 +2,7 @@ Primus-Tcp
 =======
 
 Primus Raw TCP Transformer.
-Node.js => (* || Java) Tcp Connections.
+Connect Node.js to Vanilla TCP Servers via Primus.
 
 ## Getting Started
 Install the transformer with this command:
@@ -15,11 +15,11 @@ Add the transformer to the Primus constructor and subscribe to the events.
 
 ```javascript
 var primus = require('primus');
-var tcp = require('primus-tcp/transformer/tcp');
+var transformer = require('primus-tcp/transformer/tcp');
 var parser = require('primus-tcp/parser/pipe');
 
 var PrimusSocket = primus.createSocket({
-    transformer: tcp,
+    transformer: transformer,
     parser: parser
 });
 
@@ -36,4 +36,5 @@ connection.on("error", function(){ /*...*/ });
 connection.on("data", function(data){ /*...*/ });
 ```
 
-Once the transformer has been loaded, its pretty much plain sailing using standard primus features.
+Now we are able to connect to a vanilla TCP server (Java?) and still keep all the nice features (reconnect, heartbeat, etc) Primus provides.
+
