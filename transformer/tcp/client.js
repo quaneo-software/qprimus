@@ -10,7 +10,7 @@ module.exports = function client() {
     var socket, distiller;
 
     var Distiller;
-    try { Distiller = require("qprimus/transformer/tcp/distiller"); }
+    try { Distiller = require("primus-tcp/transformer/tcp/distiller"); }
     catch(e){
         try { Distiller = require(__dirname + "/transformer/tcp/distiller"); }
         catch(e) { throw new Error('Unable To Load Distiller'); }
@@ -28,7 +28,6 @@ module.exports = function client() {
 
     //Connect to the given URL.
     primus.on('outgoing::open', function opening() {
-        
         if (socket) { socket.end(); }
         if (distiller) { distiller.end(); }
 

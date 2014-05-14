@@ -1,17 +1,23 @@
 {
-  "name": "qprimus",
-  "version": "0.0.1",
-  "description": "Quaneo Primus Extensions",
-  "author": {
-    "name": "Alex Curtis",
-    "email": ""
-  },
-  "dependencies": {
-    "primus": "git://github.com/primus/primus#master",
-    "xml-mapping": "~1.5.2",
-    "underscore": "~1.5.2"
-  },
-  "devDependencies": {},
-  "author": "",
-  "license": "MIT"
+    "name": "primus-tcp",
+    "version": "0.0.1",
+    "description": "Primus Raw TCP Transformer (Server-to-Server)",
+    "homepage": "https://github.com/alexcurtis/primus-tcp",
+    "author": {
+        "name": "Alex Curtis",
+        "email": ""
+    },
+    "dependencies": {
+        "primus": "2.2.1",
+        "underscore": "~1.6.0"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/alexcurtis/primus-tcp/blob/master/LICENSE-MIT"
+        }
+    ],
+    "keywords": [
+        "primus", "tcp", "transformer", "server", "raw"
+    ]
 }

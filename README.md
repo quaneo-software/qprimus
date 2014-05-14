@@ -1,4 +1,5 @@
-qprimus
+Primus-Tcp
 =======
 
-Quaneo Primus Extensions
+Primus Raw TCP Transformer.
+Node.js => (*|Java) Tcp Connections.
